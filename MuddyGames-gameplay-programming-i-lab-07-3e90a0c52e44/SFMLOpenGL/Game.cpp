@@ -71,12 +71,14 @@ void Game::run()
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			{
-				scaleFactor += 0.1;
+				scaleFactorX += 10.0;
+				scaleFactorY += 10.0;
 			}
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 			{
-				scaleFactor -= 0.1;
+				scaleFactorX -= 10.0;
+				scaleFactorY -= 10.0;
 			}
 		}
 		update();
@@ -344,13 +346,15 @@ void Game::draw()
 
 	//glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Y Axis
 	//glRotated(rotationAngle, 0, 1, 0);
-
+	glTranslatef(0, 0, -10);
 	glBegin(GL_QUADS);
 	{
 		rotationX = rotationX.RotationX(rotationAngleX);
 		rotationY = rotationY.RotationY(rotationAngleY);
 
-		scale = scale.Scale3D(scaleFactor);
+		scale = scale.Scale(scaleFactorX,scaleFactorY);
+
+
 		translation = translation.Translate(dx, dy);
 
 		//Front Face

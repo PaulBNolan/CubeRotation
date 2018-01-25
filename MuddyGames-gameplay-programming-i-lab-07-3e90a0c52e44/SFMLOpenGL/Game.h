@@ -32,7 +32,8 @@ private:
 	Matrix3 translation;
 	Matrix3 scale;
 
-	double scaleFactor = 100;
+	double scaleFactorX = 100;
+	double scaleFactorY = 100;
 
 	int dx = 0;
 	int dy = 0;
